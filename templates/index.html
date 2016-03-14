@@ -1,98 +1,17 @@
-<!DOCTYPE html>
-<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
-{% load pages_tags mezzanine_tags i18n future staticfiles %}
-
-    <head>
-
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
-        <meta name="description" content="{% block meta_description %}{% endblock %}">
-        <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
-        <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
-
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Chari-Unity</title>
-        <!-- Bootstrap core CSS -->
-        <link href="{% static "bootstrap/css/bootstrap.css" %}" rel="stylesheet">
-        <!-- Custom styles for this template -->
-        <link href="{% static "justified-nav.css" %}" rel="stylesheet">
-        <link href="{% static "css/main.css" %}" rel="stylesheet">
-        
-        {% ifinstalled mezzanine.blog %}
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
-        <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
-        {% endifinstalled %}
-
-        {% compress css %}
-        <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
-        {% if LANGUAGE_BIDI %}
-        <link rel="stylesheet" href="{% static "css/rtl.css" %}">
-        {% endif %}
-        {% ifinstalled cartridge.shop %}
-        <link rel="stylesheet" href="{% static "css/cartridge.css" %}">
-        {% if LANGUAGE_BIDI %}
-        <link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
-        {% endif %}
-        {% endifinstalled %}
-        {% block extra_css %}{% endblock %}
-        {% endcompress %}
-
-        <script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
-        <script src="{% static "js/bootstrap.js" %}"></script>
-        <script src="{% static "js/bootstrap-extras.js" %}"></script>
-    </head>
-    <body style="padding-top: 20px"> 
-        <!-- /container -->
-        <!-- Bootstrap core JavaScript
-    ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <a href="#" class="thumbnail" style="margin-bottom: 5px; border:0px;"> 
-                        <img src="{% static "Snips/Chari-Unity%20text.PNG" %}" alt=""> 
-                    </a>                     
-                </div>
-                <div class="col-md-5 pull-left col-md-offset-4 text-right" style="padding-top:10px">
-                    <input type="text" class="form-control" placeholder="Search" style="width:230px; border-radius:0px; display:inline; margin-right:3px;">
-                    <a href="http://" class="text-hide" style="display:inline; ">
-                        <img src="{% static "Snips/Facebook.ico" %}" style="display:inline; align:right; padding-right: 3px; height:30px; margin-top:-7px;" />Link
-                    </a>
-                    <a href="http://" class="text-hide">
-                        <img src="{% static "Snips/YouTube.ico" %}" height="30px" style="display:inline; align:right; padding-right: 3px; margin-top:-7px;" />Link
-                    </a>
-                    <a href="http://" class="text-hide">
-                        <img src="{% static "Snips/Instagram.ico" %}" height="30px" style="display:inline; align:right; padding-right: 3px; margin-top:-7px;" />Link
-                    </a>                     
-                </div>
-            </div>
-            <hr style="margin-top:0px; margin-bottom: 10px;" class="" />
-            <ul class="nav nav-justified" style="border-radius: 0px; border: 0px; line-height: 90%; background:white;">
-                <li class="" style="border-radius:0px; background-color:white; ">
-                    <a href="#" class="nav-item" style="color:white; border-radius:0px; background:red; margin-left:4px; margin-right:2px; text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000; font-size:19px;">Who We Are</a>
-                </li>
-                <li class="">
-                    <a href="#" style="color:white; border-radius:0px; background:yellow; margin-left:2px; margin-right:2px; text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000; font-size:19px;">What We Do</a>
-                </li>
-                <li>
-                    <a href="#" style="color:white; border-radius:0px; background:#3399ff; margin-left:2px; margin-right:2px; text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000; font-size:19px;">Gallery</a>
-                </li>
-                <li>
-                    <a href="#" style="color:white; border-radius:0px; background:#00cc44; margin-left:2px; margin-right:2px; text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000; font-size:19px;">Blog</a>
-                </li>
-                <li style="border-radius: 0px;">
-                    <a href="#" style="color:white; border-radius:0px; background:#000080; margin-left:2px; margin-right:4px; text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000; font-size:19px;">Donate</a>
-                </li>
-            </ul>
-            <div class="row" style="padding-top:5px;">
-                <div class="col-md-12 col-xs-12"> 
-                    <hr style="margin-top:5px; margin-bottom: 0px; " />
-                    <a href="#" class="thumbnail" style="margin:0px; padding:0px; border: 0px;"> 
-                        <img src="{% static "Snips/Chari-UNITY1-FB-Cover.jpg" %}" alt="" style="height:320px; width:100%;"> 
-                    </a>
-                    <hr style="margin-top:0px; margin-bottom: 10px;" /> 
+{% extends "base.html" %}
+{% load i18n pages_tags mezzanine_tags i18n future staticfiles %}
+{% block main %}
+<!--
+This template is provided as a custom template for the homepage, for
+when it is configured as an editable page in the navigation tree. Feel
+free to modify it.
+-->
+    <div class="row" style="padding-top:0px;">
+        <div class="col-md-12 col-xs-12">
+            <a href="#" class="thumbnail" style="margin:0px; padding:0px; border: 0px;">
+                <img src="{% static "Snips/Chari-UNITY1-FB-Cover.jpg" %}" alt="" style="height:320px; width:100%;">
+            </a>
+            <hr style="margin-top:0px; margin-bottom: 10px;" />
                 </div>
             </div>
             <div class="row">
@@ -123,75 +42,8 @@
                     <p class="text-right"><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
                 </div>
             </div>
-            <hr style="margin-top:0px; margin-bottom: 10px;" />
-            <div class="row text-left" style="padding-left:50px;">
-                <div class="col-md-3">
-                    <h3><b>Who We Are</b></h3>
-                    <div class="list-group">
-                        <a href="#" class="list-group-item">Our Philosophy</a>
-                        <a href="#" class="list-group-item">Our Mission</a>
-                        <a href="#" class="list-group-item">Our Team</a>
-                        <a href="#" class="list-group-item">Contact Information</a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <h3><b>What We Do</b></h3>
-                    <div class="list-group">
-                        <a href="#" class="list-group-item">Disaster Relief</a>
-                        <a href="#" class="list-group-item">Educational Services</a>
-                        <a href="#" class="list-group-item">Medical Aid</a>
-                        <a href="#" class="list-group-item">Upcoming Events</a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <h3><b>Gallery</b></h3>
-                    <div class="list-group">
-                        <a href="#" class="list-group-item">Event #1</a>
-                        <a href="#" class="list-group-item">Event #2</a>
-                        <a href="#" class="list-group-item">Event #3</a>
-                        <a href="#" class="list-group-item">Event #4</a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <h3><b>Blog</b></h3>
-                    <div class="list-group">
-                        <a href="#" class="list-group-item">Title #1</a>
-                        <a href="#" class="list-group-item">Title #2</a>
-                        <a href="#" class="list-group-item">Title #3</a>
-                        <a href="#" class="list-group-item">Title #4</a>
-                    </div>
-                </div>
-            </div>
-            <hr style="margin-top:15px; margin-bottom: 10px;" />
-            <footer class="footer" style="padding-top:0px; margin-top:0px; border:0px; background:white;">
-                <div class="row">
-                    <div class="col-md-2">
-                        <p>About Us</p>
-                    </div>
-                    <div class="col-md-2">
-                        <p>Contact Us</p>
-                    </div>
-                    <div class="col-md-2">
-                        <p>Legal</p>
-                    </div>
-                    <div class="col-md-2 col-md-push-4">
-                        <p class="text-right">DONATE</p>
-                    </div>
-                </div>
-            </footer>
-            <!-- Jumbotron -->
-            <!-- Example row of columns -->
-            <!-- Site footer -->
+
         </div>
-        <script src="{% static "assets/js/jquery.min.js" %}"></script>
-        <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="{% static "assets/js/ie10-viewport-bug-workaround.js" %}"></script>
-        <script text="JavaScript">
-            $( document ).ready(function() {
-                $( "#chariunitylogo" ).fadeIn( "slow" );
-            });
-        </script>
-        <script src="{% static "js/main.js" %}"></script>
-    </body>
-</html>
+    </div>
+{{ block.super }}
+{% endblock %}

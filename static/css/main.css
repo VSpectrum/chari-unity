@@ -11,3 +11,13 @@
     margin: 0px;
      padding: 0px;
 }
+
+.container {
+    background: white;
+}
+
+footer{
+    background: white;
+    margin: 0px;
+    border: none;
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
+{% load pages_tags mezzanine_tags i18n future staticfiles %}
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+        <meta name="description" content="{% block meta_description %}{% endblock %}">
+        <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+        <link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Chari-Unity</title>
+        <!-- Bootstrap core CSS -->
+
+
+        {% ifinstalled mezzanine.blog %}
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
+        <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
+        {% endifinstalled %}
+
+        {% compress css %}
+        <link href="{% static "css/mezzanine.css" %}" rel="stylesheet">
+        <link href="{% static "bootstrap/css/bootstrap.css" %}" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="{% static "justified-nav.css" %}" rel="stylesheet">
+        <link href="{% static "css/main.css" %}" rel="stylesheet">
+
+
+        {% if LANGUAGE_BIDI %}
+        <link rel="stylesheet" href="{% static "css/rtl.css" %}">
+        {% endif %}
+        {% ifinstalled cartridge.shop %}
+        <link rel="stylesheet" href="{% static "css/cartridge.css" %}">
+        {% if LANGUAGE_BIDI %}
+        <link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
+        {% endif %}
+        {% endifinstalled %}
+        {% block extra_css %}{% endblock %}
+        {% endcompress %}
+
+        <script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
+        <script src="{% static "js/bootstrap.js" %}"></script>
+        <script src="{% static "js/bootstrap-extras.js" %}"></script>
+    </head>
+
+    <body style="padding-top: 20px">
+        <!-- /container -->
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="/" class="thumbnail" style="margin-bottom: 5px; border:0px;">
+                        <img src="{% static "Snips/Chari-Unity%20text.PNG" %}" alt="">
+                    </a>
+                </div>
+                <div class="col-md-5 pull-left col-md-offset-4 text-right" style="padding-top:10px">
+                    <input type="text" class="form-control" placeholder="Search" style="width:222px; border-radius:0px; display:inline; margin-right:3px;">
+                    <a href="http://" class="text-hide" style="display:inline; ">
+                        <img src="{% static "Snips/Facebook.ico" %}" style="display:inline; align:right; padding-right: 3px; height:30px; margin-top:-7px;" />Link
+                    </a>
+                    <a href="http://" class="text-hide">
+                        <img src="{% static "Snips/YouTube.ico" %}" height="30px" style="display:inline; align:right; padding-right: 3px; margin-top:-7px;" />Link
+                    </a>
+                    <a href="http://" class="text-hide">
+                        <img src="{% static "Snips/Instagram.ico" %}" height="30px" style="display:inline; align:right; padding-right: 3px; margin-top:-7px;" />Link
+                    </a>
+                </div>
+            </div>
+            <hr style="margin-top:0px; margin-bottom: 10px;" class="" />
+            <ul class="nav nav-justified" style="border-radius: 0px; border: 0px; line-height: 90%; background:white;">
+                <li class="" style="border-radius:0px; background-color:white; ">
+                    <a href="#" class="nav-item" style="color:white; border-radius:0px; background:red; margin-left:4px; margin-right:2px; text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000; font-size:19px;">Who We Are</a>
+                </li>
+                <li class="">
+                    <a href="#" style="color:white; border-radius:0px; background:gold; margin-left:2px; margin-right:2px; text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000; font-size:19px;">What We Do</a>
+                </li>
+                <li>
+                    <a href="#" style="color:white; border-radius:0px; background:#3399ff; margin-left:2px; margin-right:2px; text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000; font-size:19px;">Gallery</a>
+                </li>
+                <li>
+                    <a href="/blog" style="color:white; border-radius:0px; background:#00cc44; margin-left:2px; margin-right:2px; text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000; font-size:19px;">Blog</a>
+                </li>
+                <li style="border-radius: 0px;">
+                    <a href="#" style="color:white; border-radius:0px; background:#000080; margin-left:2px; margin-right:4px; text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000; font-size:19px;">Donate</a>
+                </li>
+            </ul>
+
+            {% block main %}{% endblock %}
+        </div>
+    </body>
+    <footer>
+        <div class="container">
+            {% page_menu "pages/menus/footer.html" %}
+
+            <div class="row">
+                <p class="site-info text-center">
+                    {% trans "Powered by" %}
+                    <a href="http://mezzanine.jupo.org">Mezzanine</a>{% ifinstalled cartridge.shop %},
+                    <a href="http://cartridge.jupo.org">Cartridge</a>{% endifinstalled %}
+                    {% trans "and" %}
+                    <a href="http://www.djangoproject.com">Django</a>
+                    <span class="separator">|</span>
+                    {% trans "Theme by" %} <a target="_blank" href="http://getbootstrap.com">Bootstrap</a>
+                    {% ifinstalled mezzanine.mobile %}
+                    <span class="separator">|</span>
+                    <a href="{% url "set_device" "mobile" %}?next={{ request.path }}">{% trans "View Mobile Site" %}</a>
+                    {% endifinstalled %}
+                </p>
+            </div>
+        </div>
+    </footer>
+
+{% block footer_js %}
+{% include "includes/footer_scripts.html" %}
+{% endblock %}
